@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Someesvaar/Auto-sausedemo.git'
+                git branch: 'main', url: 'https://github.com/Someesvaar/MyMavenSeleniumApp02.git'
             }
         }
 
@@ -30,7 +30,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 // Start the JAR application
-                sh 'java -jar target/MyMavenSeleniumApp01-1.0-SNAPSHOT.jar'
+                sh 'java -jar target/MyMavenSeleniumApp02-1.0-SNAPSHOT.jar'
             }
         }
 
