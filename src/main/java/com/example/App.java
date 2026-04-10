@@ -3,32 +3,28 @@ package com.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class App {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
-        WebDriver driver = new ChromeDriver();
-        Thread.sleep(3000);
-
+        // ✅ Create options FIRST
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
 
-        driver.get("http://practicetestautomation.com/practice-test-login/");
-        Thread.sleep(3000);
+        // ✅ Pass options to driver
+        WebDriver driver = new ChromeDriver(options);
 
-        driver.manage().window().maximize();
-        Thread.sleep(3000);
+        driver.get("http://practicetestautomation.com/practice-test-login/");
 
         driver.findElement(By.id("username")).sendKeys("student");
-        Thread.sleep(3000);
-
         driver.findElement(By.id("password")).sendKeys("Password123");
-        Thread.sleep(3000);
-
         driver.findElement(By.id("submit")).click();
-        Thread.sleep(3000);
+
+        System.out.println("Login successful, Title: " + driver.getTitle());
 
         driver.quit();
     }
