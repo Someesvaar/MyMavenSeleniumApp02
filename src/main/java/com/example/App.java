@@ -10,6 +10,11 @@ public class App {
         WebDriver driver = new ChromeDriver();
         Thread.sleep(3000);
 
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--remote-allow-origins=*");
+
         driver.get("http://practicetestautomation.com/practice-test-login/");
         Thread.sleep(3000);
 
